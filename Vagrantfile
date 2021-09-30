@@ -44,7 +44,7 @@ nodes = [
 Vagrant.configure("2") do |config|
     nodes.each do |node|
         config.vm.define node[:hostname] do |nodeconfig|
-            #nodeconfig.vagrant.plugins = "vagrant-hostmanager"
+            nodeconfig.vagrant.plugins = "vagrant-hostmanager"
             nodeconfig.vm.box = node[:box]
             nodeconfig.vm.hostname = node[:hostname]
             nodeconfig.vm.provider node[:provider]
@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
             nodeconfig.hostmanager.manage_guest = true
             nodeconfig.hostmanager.ignore_private_ip = false
             nodeconfig.hostmanager.include_offline = true
-            nodeconfig.hostmanager.aliases = %w(node[:hostname])
+            #nodeconfig.hostmanager.aliases = %w(node[:hostname])
             # Config for VirtualBox
             nodeconfig.vm.provider "virtualbox" do |vb|
                 vb.memory = node[:memory]
@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
                 vb.check_guest_additions = false
                 #vb.vmname = node[:vmname]
                 vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+                vb.customize ["modifyvm", :id, "--natdnshostresolver2", "on"]
                 #vb.customize ["modifyvm", :id, "--nic2", "bridged", "--bridgeadapter2", "Killer(R) Wi-Fi 6 AX1650s 160MHz Wireless Network Adapter (201D2W)"]
               end
             
