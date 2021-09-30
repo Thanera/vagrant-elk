@@ -58,12 +58,12 @@ Vagrant.configure("2") do |config|
             #nodeconfig.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
             #
             # Netzwerkauflösung 
-            # nodeconfig.hostmanager.enabled = true
-            # nodeconfig.hostmanager.manage_host = true
-            # nodeconfig.hostmanager.manage_guest = true
-            # nodeconfig.hostmanager.ignore_private_ip = false
-            # nodeconfig.hostmanager.include_offline = true
-            #nodeconfig.hostmanager.aliases = %w(node[:hostname])
+            nodeconfig.hostmanager.enabled = true
+            nodeconfig.hostmanager.manage_host = true
+            nodeconfig.hostmanager.manage_guest = true
+            nodeconfig.hostmanager.ignore_private_ip = false
+            nodeconfig.hostmanager.include_offline = true
+            nodeconfig.hostmanager.aliases = %w(node[:hostname])
             # Config for VirtualBox
             nodeconfig.vm.provider "virtualbox" do |vb|
                 vb.memory = node[:memory]
