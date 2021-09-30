@@ -1,0 +1,5 @@
+server.host: 0.0.0.0
+server.name: "elk-kibana"
+elasticsearch.hosts: ["http://elk-elasticsearch:9200"]
+#elasticsearch.username: "kibana_system"
+#elasticsearch.password: "pass"
